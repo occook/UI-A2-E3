@@ -129,6 +129,20 @@ float: right;
   background-color: #f7f9fb;
 }
 
+#searchEngine{
+  float: left;
+  width: 50%;
+  position: relative;
+  background-color: #f7f9fb;
+}
+
+#gallery{
+  float: right;
+  width: 50%;
+  position: relative;
+  background-color: #f7f9fb;
+}
+
 #bodyLogout{
   float: left;
   width: 100%;
@@ -236,6 +250,10 @@ hr {
 .popup .display{
   visibility: visible;
 }
+
+.block{
+}
+
 h5{
   display: block;
   overflow: hidden;
