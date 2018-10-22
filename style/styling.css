@@ -115,6 +115,13 @@ float: right;
   min-height: 300px;
 }
 
+#body2{
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #8fc1e3;
+  min-height: 300px;
+}
+
 #leftBox{
   float: left;
   width: 34%;

@@ -95,12 +95,29 @@ span3.onclick = function() {
 }
 
 
-
+/*
+In Exercise 3 we need Register and LogIn in the header so we'll add in click events.
+*/
+$('#register').click(function(){
+  $('#body2').html("<div id='bodyLogout'></div>");
+  $('#ulxx').html('<li id = "register" class="firstH"><a>Register</a></li><li id="logIn" class="secondH"><a>Login</a></li>');
+  $('#bodyLogout').html(registerForm);
+  $('#body').remove();
+});
+//After this, you should now make new click events for login and register. To make things cleaner, make a seperate helper function that you call inside your event listener! You should change what is in the #bodyLogout div element not the #body element. This will keep the css looking good.
+//below is the logIn button function
+$('#logIn').click(function(){
+  $('#body2').html("<div id='bodyLogout'></div>");
+  $('#ulxx').html('<li id = "register" class="firstH"><a>Register</a></li><li id="logIn" class="secondH"><a>Login</a></li>');
+  $('#bodyLogout').html(logInForm);
+  $('#body').remove();
+});
 /*
     HERE IS THE START OF THE LOGOUT PAGE. YOU WILL PROBABLY BE BASING A LOT OF CODE ON THIS WHEN YOU DO LOGIN AND REGISTER SO MAKE SURE YOU READ OVER THIS AND THE CORRESPONDING HTML TAGS!!!!!
 */
 $('#logout').click(function(){
-  $('#body').html("<div id='bodyLogout'></div>");
+  $('#body').remove();
+  $('#body2').html("<div id='bodyLogout'></div>");
   $('#ulxx').html('<li id = "register" class="firstH"><a>Register</a></li><li id="logIn" class="secondH"><a>Login</a></li>');
   $('#register').click(function(){
     $('#bodyLogout').html(registerForm);
