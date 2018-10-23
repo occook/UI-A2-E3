@@ -12,6 +12,38 @@ div{
   border-radius: 10px;
 }
 
+#body2{
+display: inline-block;
+width: 99%;
+}
+
+#searchEngine{
+  float: left;
+  width: 45%;
+  height: 99%;
+}
+
+#gallery{
+  width: 45%
+  height: 99%;
+  overflow: hidden;
+  float: left;
+}
+#gallery .slides{
+  display: block;
+  width: 45%;
+  height: 99%
+  margin: 0;
+  padding: 0;
+
+}
+#gallery .slide{
+  float: left;
+  border: none;
+  list-style-type: none;
+  width: 45%;
+  height: 99%;
+}
 p{
     font-size: 14px;
 }
