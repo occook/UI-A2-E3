@@ -215,7 +215,7 @@ $('#firstName').val(getCookie('firstNameCurrent'));
 var galleryDescription = ["The Ritz hotel provides a luxurious experience","The Sacha hotel provides a wondrous experience","The Ardosa hotel provides a cool experience"];
 var counter=0;
 
-function rightArrow(){
+function rightArrow(){ /*when you click the right Arrow*/
  counter+=1;
 $('#galleryDescription').html(galleryDescription[counter]);
 $('#slidesID').css('margin-left','-=100%');
@@ -226,7 +226,7 @@ if(counter>=galleryDescription.length){
 }
 
 }
-function leftArrow(){
+function leftArrow(){ /*when you click the left arrow*/
   counter-=1;
   $('#galleryDescription').html(galleryDescription[counter]);
  $('#slidesID').css('margin-left','+=100%');
@@ -237,8 +237,8 @@ function leftArrow(){
  }
 
 }
-$('#rightArrow').click(rightArrow());
-$('#leftArrow').click(leftArrow());
+$('#rightArrow').click(function(){rightArrow()});
+$('#leftArrow').click(function(){leftArrow()});
 console.log("clickNow");
 
 galleryRunner = setInterval(function(){
