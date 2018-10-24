@@ -27,7 +27,14 @@
      </header> <!-- end header div object  -->
 
      <div id="body2">
-       <div id="searchEngine"></div>
+
+       <div id="searchEngine">
+     <form>
+           <button id="search" name="searchForm" type="submit">Search</button></br></br>
+           <input type="text" id="myName" placeholder="Search for name...">
+           <input type="text" id="myLocation" placeholder="Search for location...">
+         </form>
+    </div>
        <div id="gallery">
          <ul  id = 'slidesID' class="slides">
                  <li class = "slide"><img id = "slide1" src="images/ritz.jpg" height = "99%" width = "95%"/></li>
@@ -40,6 +47,10 @@
                      <button id = 'rightArrow' class="btn" > > </button>
                </div>
        </div>
+
+    
+
+
      </div>
 
     <div id="body"> <!-- start body div object  -->
@@ -164,7 +175,9 @@
       </ul>
     </footer> <!-- close footer  -->
 
+
     <script src="jquery-3.2.1.min.js"></script> <!--Link to our JavaScript and Jquery Libraries -->
+    <script src="jquery-ui.js"></script>
     <script src="script.js"></script>
 
   </body> <!-- close body  -->

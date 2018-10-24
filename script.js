@@ -211,6 +211,7 @@ $('#email').val(getCookie('emailCurrent'));
 $('#address').val(getCookie('addressCurrent'));
 $('#birthday').val(getCookie('birthdayCurrent'));
 $('#firstName').val(getCookie('firstNameCurrent'));
+
 /*gallery portion below*/
 
 /*I had to move galleryDescription up here for some reason i think because it is an array*/
@@ -269,6 +270,19 @@ galleryRunner = setInterval(function(){ /*this starts the timer*/
 },5000);
 
 /*gallery portion ends*/
+
+
+
+
+/*
+  This section will deal with the search engine.
+*/
+$('#myName').autocomplete({
+  source: ["La Castela","El Doble", "La Ardosa", "El Boqueron", "Sanlúcar", "Alagarabia", "DiverXO", "Botin", "Yoka Loka", "Kappo"]
+});
+$('#myLocation').autocomplete({
+  source: ["La Castela","El Doble", "La Ardosa", "El Boqueron", "Sanlúcar", "Alagarabia", "DiverXO", "Botin", "Yoka Loka", "Kappo"]
+});
 
 
 /*
