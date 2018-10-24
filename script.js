@@ -212,18 +212,21 @@ $('#address').val(getCookie('addressCurrent'));
 $('#birthday').val(getCookie('birthdayCurrent'));
 $('#firstName').val(getCookie('firstNameCurrent'));
 /*gallery portion below*/
-counter=0;
-$('#rightArrow').click(function(){
-   counter+=1;
-  $('#galleryDescription').html(galleryDescription[counter]);
- $('#slidesID').css('margin-left','-=100%');
- if(counter>2){
-    counter =0;
-   $('#galleryDescription').html(galleryDescription[counter]);
-   $('#slidesID').css('margin-left','0%');
- }
-});
-$('#leftArrow').click(function(){
+var galleryDescription = ["The Ritz hotel provides a luxurious experience","The Sacha hotel provides a wondrous experience","The Ardosa hotel provides a cool experience"];
+var counter=0;
+
+function rightArrow(){
+ counter+=1;
+$('#galleryDescription').html(galleryDescription[counter]);
+$('#slidesID').css('margin-left','-=100%');
+if(counter>=galleryDescription.length){
+  counter =0;
+ $('#galleryDescription').html(galleryDescription[counter]);
+ $('#slidesID').css('margin-left','0%');
+}
+
+}
+function leftArrow(){
   counter-=1;
   $('#galleryDescription').html(galleryDescription[counter]);
  $('#slidesID').css('margin-left','+=100%');
@@ -232,31 +235,24 @@ $('#leftArrow').click(function(){
    $('#galleryDescription').html(galleryDescription[counter]);
    $('#slidesID').css('margin-left','-=300%');
  }
-});
-setInterval(function james(){
+
+}
+$('#rightArrow').click(rightArrow());
+$('#leftArrow').click(leftArrow());
+console.log("clickNow");
+
+galleryRunner = setInterval(function(){
+  $('#leftArrow').off();
+  $('#rightArrow').off();
+  $('#rightArrow').click(function(){rightArrow()});
+  $('#leftArrow').click(function(){
+    leftArrow()
+    console.log('burp');
+  });
   counter+=1;
   $('#galleryDescription').html(galleryDescription[counter]);
   $('#slidesID').css('margin-left','-=100%');
-  $('#leftArrow').click(function(){
-     counter-=1;
-   $('#slidesID').css('margin-left','+=100%');
-   $('#galleryDescription').html(galleryDescription[counter]);
-   if(counter<0){
-     counter=2;
-     $('#slidesID').css('margin-left','-=300%');
-     $('#galleryDescription').html(galleryDescription[counter]);
-   }
-  });
-  $('#rightArrow').click(function(){
-    counter+=1;
-   $('#slidesID').css('margin-left','-=100%');
-   $('#galleryDescription').html(galleryDescription[counter]);
-   if(counter>2){
-     $('#slidesID').css('margin-left','0%');
-     $('#galleryDescription').html(galleryDescription[counter]);
-     counter =0;
-   }
-  });
+
   if(counter>2){
     counter =0;
     $('#slidesID').css('margin-left','0%');
@@ -267,6 +263,7 @@ setInterval(function james(){
     $('#slidesID').css('margin-left','-=300%');
     $('#galleryDescription').html(galleryDescription[counter]);
   }
+
 },5000);
 
 /*gallery portion ends*/
@@ -293,4 +290,3 @@ var sachaButtonString = "Name: Restaurante Sacha\nAddress: 11, Calle de Juan Hur
 var registerForm = "<b>Account Information</b><br><form id='registerFile' method='post' onsubmit='helperRegister()' name='regForm'>Username: <input type='text' name='username' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><b>Personal Information</b><br>First Name: <input type='text' name='firstName' required><br>Last Name: <input type = 'text' name = 'lastName' required><br>E-mail Address: <input type = 'email' name = 'email' required><br>Birthday: <input type = 'date' name = 'birthday' required><br>Address: <input type = 'text' name = 'address' required><br><br><br>Profile Picture: <div id='browse'><input type = 'file' name = 'profilePicture'></div><br><br><input type = 'checkbox' name = 'terms' value = 'read' required>I have read and accept the terms of use<br><br><input type = 'submit' value = 'Save'><br><input type = 'reset' value = 'Delete'> </form>";
 //logIn form html.  when you click submit it runs the helperLogIn function
 var logInForm = "<b>Account Log In</b><br><form name='regForm' method='post' onsubmit='helperLogIn()'>Email: <input type='email' name='logInEmail' required><br>Password: <input type = 'password' pattern = '[a-z0-9]{1,8}' name = 'psw'required><br><br><br><br><input type = 'submit' value = 'Log In'></form>";
-var galleryDescription = ["The Ritz hotel provides a luxurious experience","The Sacha hotel provides a wondrous experience","The Ardosa hotel provides a cool experience"];
