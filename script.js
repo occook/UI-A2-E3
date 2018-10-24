@@ -212,6 +212,8 @@ $('#address').val(getCookie('addressCurrent'));
 $('#birthday').val(getCookie('birthdayCurrent'));
 $('#firstName').val(getCookie('firstNameCurrent'));
 /*gallery portion below*/
+
+/*I had to move galleryDescription up here for some reason i think because it is an array*/
 var galleryDescription = ["The Ritz hotel provides a luxurious experience","The Sacha hotel provides a wondrous experience","The Ardosa hotel provides a cool experience"];
 var counter=0;
 
@@ -219,6 +221,7 @@ function rightArrow(){ /*when you click the right Arrow*/
  counter+=1;
 $('#galleryDescription').html(galleryDescription[counter]);
 $('#slidesID').css('margin-left','-=100%');
+/*makes sure you don't run out images on the right side*/
 if(counter>=galleryDescription.length){
   counter =0;
  $('#galleryDescription').html(galleryDescription[counter]);
@@ -230,6 +233,7 @@ function leftArrow(){ /*when you click the left arrow*/
   counter-=1;
   $('#galleryDescription').html(galleryDescription[counter]);
  $('#slidesID').css('margin-left','+=100%');
+ /*makes sure you don't run out of images on the left side*/
  if(counter<0){
    counter=2;
    $('#galleryDescription').html(galleryDescription[counter]);
@@ -237,18 +241,19 @@ function leftArrow(){ /*when you click the left arrow*/
  }
 
 }
-$('#rightArrow').click(function(){rightArrow()});
-$('#leftArrow').click(function(){leftArrow()});
+$('#rightArrow').click(function(){rightArrow()}); /*sets the initial event handlers*/
+$('#leftArrow').click(function(){leftArrow()}); /*sets the initial event handlers*/
 console.log("clickNow");
 
-galleryRunner = setInterval(function(){
-  $('#leftArrow').off();
+galleryRunner = setInterval(function(){ /*this starts the timer*/
+  $('#leftArrow').off(); /*have to remove previous event handlers*/
   $('#rightArrow').off();
-  $('#rightArrow').click(function(){rightArrow()});
+  $('#rightArrow').click(function(){rightArrow()}); /*sets the event handlers in the loop*/
   $('#leftArrow').click(function(){
     leftArrow()
-    console.log('burp');
   });
+  /*the below code describes the changes in the images and text that must be made*/
+  /*it assumes there are 3 images and accounts for text changes*/
   counter+=1;
   $('#galleryDescription').html(galleryDescription[counter]);
   $('#slidesID').css('margin-left','-=100%');
