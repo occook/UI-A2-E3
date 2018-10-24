@@ -212,6 +212,67 @@ $('#address').val(getCookie('addressCurrent'));
 $('#birthday').val(getCookie('birthdayCurrent'));
 $('#firstName').val(getCookie('firstNameCurrent'));
 
+/*gallery portion below*/
+
+/*I had to move galleryDescription up here for some reason i think because it is an array*/
+var galleryDescription = ["The Ritz hotel provides a luxurious experience","The Sacha hotel provides a wondrous experience","The Ardosa hotel provides a cool experience"];
+var counter=0;
+
+function rightArrow(){ /*when you click the right Arrow*/
+  counter+=1;
+  $('#galleryDescription').html(galleryDescription[counter]);
+  $('#slidesID').css('margin-left','-=100%');
+  /*makes sure you don't run out images on the right side*/
+    if(counter>=galleryDescription.length){
+      counter =0;
+      $('#galleryDescription').html(galleryDescription[counter]);
+      $('#slidesID').css('margin-left','0%');
+     }
+}
+function leftArrow(){ /*when you click the left arrow*/
+   counter-=1;
+   $('#galleryDescription').html(galleryDescription[counter]);
+   $('#slidesID').css('margin-left','+=100%');
+ /*makes sure you don't run out of images on the left side*/
+   if(counter<0){
+     counter=2;
+     $('#galleryDescription').html(galleryDescription[counter]);
+     $('#slidesID').css('margin-left','-=300%');
+   }
+}
+$('#rightArrow').click(function(){rightArrow()}); /*sets the initial event handlers*/
+$('#leftArrow').click(function(){leftArrow()}); /*sets the initial event handlers*/
+console.log("clickNow");
+
+galleryRunner = setInterval(function(){ /*this starts the timer*/
+  $('#leftArrow').off(); /*have to remove previous event handlers*/
+  $('#rightArrow').off();
+  $('#rightArrow').click(function(){rightArrow()}); /*sets the event handlers in the loop*/
+  $('#leftArrow').click(function(){
+    leftArrow()
+  });
+  /*the below code describes the changes in the images and text that must be made*/
+  /*it assumes there are 3 images and accounts for text changes*/
+  counter+=1;
+  $('#galleryDescription').html(galleryDescription[counter]);
+  $('#slidesID').css('margin-left','-=100%');
+
+  if(counter>2){
+    counter =0;
+    $('#slidesID').css('margin-left','0%');
+    $('#galleryDescription').html(galleryDescription[counter]);
+  }
+  if(counter<0){
+    counter=2;
+    $('#slidesID').css('margin-left','-=300%');
+    $('#galleryDescription').html(galleryDescription[counter]);
+  }
+},5000);
+
+/*gallery portion ends*/
+
+
+
 
 /*
   This section will deal with the search engine.
@@ -222,6 +283,7 @@ $('#myName').autocomplete({
 $('#myLocation').autocomplete({
   source: ["La Castela","El Doble", "La Ardosa", "El Boqueron", "Sanlúcar", "Alagarabia", "DiverXO", "Botin", "Yoka Loka", "Kappo"]
 });
+
 
 /*
     MOVED ALL OF THE LARGE STRINGS HERE SO WE DON'T HAVE TO LOOK AT ALL OF THIS JUNK. NOW WE CAN QUICKLY THROUGH OUR ACTUAL IMPORTANT CODE RATHER THAN THESE LONG STRINGS.
