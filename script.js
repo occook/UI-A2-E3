@@ -218,28 +218,26 @@ var galleryDescription = ["The Ritz hotel provides a luxurious experience","The 
 var counter=0;
 
 function rightArrow(){ /*when you click the right Arrow*/
- counter+=1;
-$('#galleryDescription').html(galleryDescription[counter]);
-$('#slidesID').css('margin-left','-=100%');
-/*makes sure you don't run out images on the right side*/
-if(counter>=galleryDescription.length){
-  counter =0;
- $('#galleryDescription').html(galleryDescription[counter]);
- $('#slidesID').css('margin-left','0%');
-}
-
+  counter+=1;
+  $('#galleryDescription').html(galleryDescription[counter]);
+  $('#slidesID').css('margin-left','-=100%');
+  /*makes sure you don't run out images on the right side*/
+    if(counter>=galleryDescription.length){
+      counter =0;
+      $('#galleryDescription').html(galleryDescription[counter]);
+      $('#slidesID').css('margin-left','0%');
+     }
 }
 function leftArrow(){ /*when you click the left arrow*/
-  counter-=1;
-  $('#galleryDescription').html(galleryDescription[counter]);
- $('#slidesID').css('margin-left','+=100%');
- /*makes sure you don't run out of images on the left side*/
- if(counter<0){
-   counter=2;
+   counter-=1;
    $('#galleryDescription').html(galleryDescription[counter]);
-   $('#slidesID').css('margin-left','-=300%');
- }
-
+   $('#slidesID').css('margin-left','+=100%');
+ /*makes sure you don't run out of images on the left side*/
+   if(counter<0){
+     counter=2;
+     $('#galleryDescription').html(galleryDescription[counter]);
+     $('#slidesID').css('margin-left','-=300%');
+   }
 }
 $('#rightArrow').click(function(){rightArrow()}); /*sets the initial event handlers*/
 $('#leftArrow').click(function(){leftArrow()}); /*sets the initial event handlers*/
@@ -268,15 +266,9 @@ galleryRunner = setInterval(function(){ /*this starts the timer*/
     $('#slidesID').css('margin-left','-=300%');
     $('#galleryDescription').html(galleryDescription[counter]);
   }
-
 },5000);
 
 /*gallery portion ends*/
-
-
-
-
-
 
 
 /*
