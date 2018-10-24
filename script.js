@@ -211,6 +211,18 @@ $('#email').val(getCookie('emailCurrent'));
 $('#address').val(getCookie('addressCurrent'));
 $('#birthday').val(getCookie('birthdayCurrent'));
 $('#firstName').val(getCookie('firstNameCurrent'));
+
+
+/*
+  This section will deal with the search engine.
+*/
+$('#myName').autocomplete({
+  source: ["La Castela","El Doble", "La Ardosa", "El Boqueron", "Sanlúcar", "Alagarabia", "DiverXO", "Botin", "Yoka Loka", "Kappo"]
+});
+$('#myLocation').autocomplete({
+  source: ["La Castela","El Doble", "La Ardosa", "El Boqueron", "Sanlúcar", "Alagarabia", "DiverXO", "Botin", "Yoka Loka", "Kappo"]
+});
+
 /*
     MOVED ALL OF THE LARGE STRINGS HERE SO WE DON'T HAVE TO LOOK AT ALL OF THIS JUNK. NOW WE CAN QUICKLY THROUGH OUR ACTUAL IMPORTANT CODE RATHER THAN THESE LONG STRINGS.
 */
